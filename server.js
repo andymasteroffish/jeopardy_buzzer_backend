@@ -19,9 +19,7 @@ const server = express()
 
 const wss = new Server({ server });
 
-function setup(){
-
-}
+setInterval( lifeline_pulse, 3000);
 
 //getting a new connections
 wss.on("connection", ws => {
@@ -128,4 +126,16 @@ function print_players(){
 	})
 }
 
-setup();
+function lifeline_pulse(){
+	console.log("pulse")
+	let val = {
+		type: "pulse"
+	}
+	if (board_ws != null){
+		board_ws.send(JSON.stringify(val))
+	}
+	players.forEach( player => {
+		player.ws.send(JSON.stringify(val))
+	})
+}
+
