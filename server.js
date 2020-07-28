@@ -32,7 +32,7 @@ wss.on("connection", ws => {
 		console.log('Client disconnected')
 		for (let i=players.length-1; i>=0; i--){
 			if (players[i].ws == ws){
-				console.log("time to kill "+players.disp_name)
+				console.log("time to kill "+players[i].disp_name)
 				players.splice(i,1);
 			}
 		}
