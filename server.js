@@ -127,7 +127,6 @@ function print_players(){
 }
 
 function lifeline_pulse(){
-	console.log("pulse")
 	let val = {
 		type: "pulse"
 	}
