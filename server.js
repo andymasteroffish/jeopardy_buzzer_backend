@@ -105,8 +105,8 @@ wss.on("connection", ws => {
 			}
 		}
 
-		console.log("here the players")
-		print_players()
+		//console.log("here the players")
+		//print_players()
 	})
 })
 
@@ -122,8 +122,9 @@ function get_player_from_ws(ws){
 }
 
 function print_players(){
+	console.log("all players:")
 	players.forEach( (player) => {
-		console.log(player.disp_name+": "+player.in_game)
+		console.log("  "+player.disp_name)
 	})
 }
 
