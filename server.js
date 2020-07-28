@@ -26,6 +26,8 @@ function setup(){
 //getting a new connections
 wss.on("connection", ws => {
 	
+	console.log("papa got that connect")
+
 	ws.on('close', () => {
 		console.log('Client disconnected')
 		//TODO: remove player
@@ -43,8 +45,10 @@ wss.on("connection", ws => {
 		}
 
 		if (msg.type == "join"){
+			console.log("new player alert!")
 
 			if (get_player_from_ws(ws) == null){
+				console.log("add "+msg.player_name)
 				let player = {
 					ws: ws,
 					disp_name: msg.player_name,
