@@ -37,10 +37,9 @@ wss.on("connection", ws => {
 	});
 
 	ws.on('message', function incoming(msg_raw){
-		console.log("got a message")
 		let msg = JSON.parse(msg_raw)
-
-		console.log(msg)
+		//console.log("got a message")
+		//console.log(msg)
 
 		if (msg.type == "register_board"){
 			console.log("got a board!")
