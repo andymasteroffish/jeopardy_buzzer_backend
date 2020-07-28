@@ -30,7 +30,12 @@ wss.on("connection", ws => {
 
 	ws.on('close', () => {
 		console.log('Client disconnected')
-		//TODO: remove player
+		for (let i=players.length-1; i>=0; i--){
+			if (players[i].ws == ws){
+				console.log("time to kill "+players.disp_name)
+				players.splice(i,1);
+			}
+		}
 	});
 
 	ws.on('message', function incoming(msg_raw){
@@ -73,7 +78,7 @@ wss.on("connection", ws => {
 					}
 					board_ws.send(JSON.stringify(board_reply))
 				}else{
-
+					console.log("no board to send new player to")
 				}
 
 			}
@@ -91,6 +96,12 @@ wss.on("connection", ws => {
 					player_name:player.disp_name
 				}
 				board_ws.send(JSON.stringify(val))
+			}else{
+				if (board_ws == null){
+					console.log("can't buzz no board")
+				}else{
+					console.log("somehting went wrong with buzz")
+				}
 			}
 		}
 
